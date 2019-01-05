@@ -11,7 +11,7 @@ import numpy as np
 import music21
 from config import config
 
-def simulate_fsm(raagam,taalam):
+def simulate_fsm(raagam,taalam,num_avartanams=50):
     '''
     This function simulates a raaga-specific FSM to produce a score.
     ARGS:
@@ -55,7 +55,7 @@ def simulate_fsm(raagam,taalam):
     prev_swaram_ind = int((len(unotes)-1)/3) # To start from Sa
     prev_note = music21.note.Note(unotes[prev_swaram_ind])
     # create a list of notes that will be added to the stream
-    for avartanam_num in range(20):
+    for avartanam_num in range(num_avartanams):
         notes_list = []
         # notes_list.append(prev_note)
         for taalam_num in range(taalam_count):
@@ -97,15 +97,16 @@ def simulate_fsm(raagam,taalam):
 
     # add the part to it
     simulated_fsm.append(part)
-    #simulated_fsm.show()
     simulated_fsm.show('midi')
+    simulated_fsm.show()
+
     return simulated_fsm
 
 
 def simulate_fsm_with_gamakam(raagam,taalam):
     '''
     This function simulates a raaga-specific FSM to produce a score.
-    Importantly, it adds gamakas to the music 
+    Importantly, it adds gamakas to the music
     ARGS:
     raagam: string - raagam name
 
@@ -222,8 +223,8 @@ def simulate_fsm_with_gamakam(raagam,taalam):
 
     # add the part to it
     simulated_fsm.append(part)
-    #simulated_fsm.show()
     simulated_fsm.show('midi')
+    simulated_fsm.show()
     return simulated_fsm
 
 
